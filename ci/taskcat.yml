@@ -13,7 +13,7 @@ tests:
     parameters:
       AvailabilityZones: "$[taskcat_getaz_2]"
       EmailAddress: email@yourdomain.com
-      KeyPairName: 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
+      KeyPairName: 
       WebserverCIDR: "0.0.0.0/0"
       QSS3KeyPrefix: "qs-workshop/"
       QSS3BucketName: "$[taskcat_autobucket]"
