@@ -1,0 +1,676 @@
+ _            _             _   
+| |_ __ _ ___| | _____ __ _| |_ 
+| __/ _` / __| |/ / __/ _` | __|
+| || (_| \__ \   < (_| (_| | |_ 
+ \__\__,_|___/_|\_\___\__,_|\__|
+                                
+
+
+version 0.9.30
+[ERROR  ] : ValidationError Additional properties are not allowed ('parameters' was unexpected)
+
+Failed validating 'additionalProperties' in schema:
+    {'$schema': 'http://json-schema.org/draft-06/schema#',
+     'additionalProperties': False,
+     'definitions': {'GeneralConfig': {'additionalProperties': False,
+                                       'description': 'General '
+                                                      'configuration '
+                                                      'settings.',
+                                       'properties': {'artifact_regions': {'description': 'List '
+                                                                                          'of '
+                                                                                          'AWS '
+                                                                                          'regions '
+                                                                                          'where '
+                                                                                          'artifacts '
+                                                                                          'need '
+                                                                                          'to '
+                                                                                          'be '
+                                                                                          'copied. '
+                                                                                          'This '
+                                                                                          'helps '
+                                                                                          'same '
+                                                                                          'region '
+                                                                                          'artifact '
+                                                                                          'bucket '
+                                                                                          'access '
+                                                                                          'to '
+                                                                                          'resources',
+                                                                           'items': {'description': 'AWS '
+                                                                                                    'Region '
+                                                                                                    'name',
+                                                                                     'examples': ['us-east-1'],
+                                                                                     'pattern': '^(ap|eu|us|sa|ca|cn|af|me|us-gov)-(central|south|north|east|west|southeast|southwest|northeast|northwest)-[0-9]$',
+                                                                                     'type': 'string'},
+                                                                           'type': 'array'},
+                                                      'auth': {'additionalProperties': {'type': 'string'},
+                                                               'description': 'AWS '
+                                                                              'authentication '
+                                                                              'section',
+                                                               'examples': [{'cn-northwest-1': 'china-profile',
+                                                                             'default': 'my-default-profile',
+                                                                             'us-east-2': 'specific-profile-for-us-east-2'}],
+                                                               'type': 'object'},
+                                                      'parameters': {'additionalProperties': {'anyOf': [{'items': {'anyOf': [{'type': 'integer'},
+                                                                                                                             {'type': 'string'}]},
+                                                                                                         'type': 'array'},
+                                                                                                        {'type': 'boolean'},
+                                                                                                        {'type': 'integer'},
+                                                                                                        {'type': 'string'}]},
+                                                                     'description': 'Parameter '
+                                                                                    'key-values '
+                                                                                    'to '
+                                                                                    'pass '
+                                                                                    'to '
+                                                                                    'CloudFormation, '
+                                                                                    'parameters '
+                                                                                    'provided '
+                                                                                    'in '
+                                                                                    'global '
+                                                                                    'config '
+                                                                                    'take '
+                                                                                    'precedence',
+                                                                     'type': 'object'},
+                                                      'posthooks': {'description': 'hooks '
+                                                                                   'to '
+                                                                                   'execute '
+                                                                                   'after '
+                                                                                   'executing '
+                                                                                   'tests',
+                                                                    'items': {'$ref': '#/definitions/HookData'},
+                                                                    'type': 'array'},
+                                                      'prehooks': {'description': 'hooks '
+                                                                                  'to '
+                                                                                  'execute '
+                                                                                  'prior '
+                                                                                  'to '
+                                                                                  'executing '
+                                                                                  'tests',
+                                                                   'items': {'$ref': '#/definitions/HookData'},
+                                                                   'type': 'array'},
+                                                      'regions': {'description': 'List '
+                                                                                 'of '
+                                                                                 'AWS '
+                                                                                 'regions',
+                                                                  'items': {'description': 'AWS '
+                                                                                           'Region '
+                                                                                           'name',
+                                                                            'examples': ['us-east-1'],
+                                                                            'pattern': '^(ap|eu|us|sa|ca|cn|af|me|us-gov)-(central|south|north|east|west|southeast|southwest|northeast|northwest)-[0-9]$',
+                                                                            'type': 'string'},
+                                                                  'type': 'array'},
+                                                      's3_bucket': {'description': 'Name '
+                                                                                   'of '
+                                                                                   'S3 '
+                                                                                   'bucket '
+                                                                                   'to '
+                                                                                   'upload '
+                                                                                   'project '
+                                                                                   'to, '
+                                                                                   'if '
+                                                                                   'left '
+                                                                                   'out '
+                                                                                   'a '
+                                                                                   'bucket '
+                                                                                   'will '
+                                                                                   'be '
+                                                                                   'auto-generated',
+                                                                    'examples': ['my-s3-bucket-name'],
+                                                                    'type': 'string'},
+                                                      's3_regional_buckets': {'description': 'Enable '
+                                                                                             'regional '
+                                                                                             'auto-buckets.',
+                                                                              'examples': [True,
+                                                                                           False],
+                                                                              'type': 'boolean'},
+                                                      'tags': {'additionalProperties': {'type': 'string'},
+                                                               'description': 'Tags '
+                                                                              'to '
+                                                                              'apply '
+                                                                              'to '
+                                                                              'CloudFormation '
+                                                                              'template',
+                                                               'examples': [{'CostCenter': '1001'}],
+                                                               'type': 'object'}},
+                                       'type': 'object'},
+                     'HookData': {'additionalProperties': False,
+                                  'description': 'Hook definition',
+                                  'properties': {'config': {'description': 'hook '
+                                                                           'configuration',
+                                                            'type': 'object'},
+                                                 'type': {'description': 'hook '
+                                                                         'type',
+                                                          'type': 'string'}},
+                                  'type': 'object'},
+                     'ProjectConfig': {'additionalProperties': False,
+                                       'description': 'Project specific '
+                                                      'configuration '
+                                                      'section',
+                                       'properties': {'artifact_regions': {'description': 'List '
+                                                                                          'of '
+                                                                                          'AWS '
+                                                                                          'regions '
+                                                                                          'where '
+                                                                                          'artifacts '
+                                                                                          'need '
+                                                                                          'to '
+                                                                                          'be '
+                                                                                          'copied. '
+                                                                                          'This '
+                                                                                          'helps '
+                                                                                          'same '
+                                                                                          'region '
+                                                                                          'artifact '
+                                                                                          'bucket '
+                                                                                          'access '
+                                                                                          'to '
+                                                                                          'resources',
+                                                                           'items': {'description': 'AWS '
+                                                                                                    'Region '
+                                                                                                    'name',
+                                                                                     'examples': ['us-east-1'],
+                                                                                     'pattern': '^(ap|eu|us|sa|ca|cn|af|me|us-gov)-(central|south|north|east|west|southeast|southwest|northeast|northwest)-[0-9]$',
+                                                                                     'type': 'string'},
+                                                                           'type': 'array'},
+                                                      'auth': {'additionalProperties': {'type': 'string'},
+                                                               'description': 'AWS '
+                                                                              'authentication '
+                                                                              'section',
+                                                               'examples': [{'cn-northwest-1': 'china-profile',
+                                                                             'default': 'my-default-profile',
+                                                                             'us-east-2': 'specific-profile-for-us-east-2'}],
+                                                               'type': 'object'},
+                                                      'az_blacklist': {'description': 'List '
+                                                                                      'of '
+                                                                                      'Availablilty '
+                                                                                      'Zones '
+                                                                                      "ID's "
+                                                                                      'to '
+                                                                                      'exclude '
+                                                                                      'when '
+                                                                                      'generating '
+                                                                                      'availability '
+                                                                                      'zones',
+                                                                       'items': {'description': 'Availability '
+                                                                                                'Zone '
+                                                                                                'ID, '
+                                                                                                'eg.: '
+                                                                                                "'use1-az1'",
+                                                                                 'examples': ['usw2-laz1-az1',
+                                                                                              'use2-az2'],
+                                                                                 'pattern': '(afs1-az1|afs1-az2|afs1-az3|ape1-az1|ape1-az2|ape1-az3|apne1-az1|apne1-az2|apne1-az4|apne2-az1|apne2-az2|apne2-az3|apne2-az4|apne3-az1|apne3-az2|apne3-az3|aps1-az1|aps1-az2|aps1-az3|apse1-az1|apse1-az2|apse1-az3|apse2-az1|apse2-az2|apse2-az3|apse3-az1|apse3-az2|apse3-az3|cac1-az1|cac1-az2|cac1-az4|euc1-az1|euc1-az2|euc1-az3|eun1-az1|eun1-az2|eun1-az3|eus1-az1|eus1-az2|eus1-az3|euw1-az1|euw1-az2|euw1-az3|euw2-az1|euw2-az2|euw2-az3|euw3-az1|euw3-az2|euw3-az3|mes1-az1|mes1-az2|mes1-az3|sae1-az1|sae1-az2|sae1-az3|use1-atl1-az1|use1-az1|use1-az2|use1-az3|use1-az4|use1-az5|use1-az6|use1-bos1-az1|use1-chi1-az1|use1-dfw1-az1|use1-iah1-az1|use1-mci1-az1|use1-mia1-az1|use1-msp1-az1|use1-nyc1-az1|use1-phl1-az1|use2-az1|use2-az2|use2-az3|usw1-az1|usw1-az3|usw2-az1|usw2-az2|usw2-az3|usw2-az4|usw2-den1-az1|usw2-las1-az1|usw2-lax1-az1|usw2-lax1-az2|usw2-pdx1-az1|usw2-phx1-az1|usw2-sea1-az1)',
+                                                                                 'type': 'string'},
+                                                                       'type': 'array'},
+                                                      'build_submodules': {'description': 'Build '
+                                                                                          'Lambda '
+                                                                                          'zips '
+                                                                                          'recursively '
+                                                                                          'for '
+                                                                                          'submodules, '
+                                                                                          'set '
+                                                                                          'to '
+                                                                                          'false '
+                                                                                          'to '
+                                                                                          'disable',
+                                                                           'examples': [True,
+                                                                                        False],
+                                                                           'type': 'boolean'},
+                                                      'lambda_source_path': {'description': 'Path '
+                                                                                            'relative '
+                                                                                            'to '
+                                                                                            'the '
+                                                                                            'project '
+                                                                                            'root '
+                                                                                            'containing '
+                                                                                            'Lambda '
+                                                                                            'zip '
+                                                                                            'files, '
+                                                                                            'default '
+                                                                                            'is '
+                                                                                            "'lambda_functions/source'",
+                                                                             'examples': ['functions/source'],
+                                                                             'type': 'string'},
+                                                      'lambda_zip_path': {'description': 'Path '
+                                                                                         'relative '
+                                                                                         'to '
+                                                                                         'the '
+                                                                                         'project '
+                                                                                         'root '
+                                                                                         'to '
+                                                                                         'place '
+                                                                                         'Lambda '
+                                                                                         'zip '
+                                                                                         'files',
+                                                                          'examples': ['functions/packages'],
+                                                                          'type': 'string'},
+                                                      'name': {'description': 'Project '
+                                                                              'name, '
+                                                                              'used '
+                                                                              'as '
+                                                                              's3 '
+                                                                              'key '
+                                                                              'prefix '
+                                                                              'when '
+                                                                              'uploading '
+                                                                              'objects',
+                                                               'examples': ['my-project-name'],
+                                                               'pattern': '^[a-z0-9-]*$',
+                                                               'type': 'string'},
+                                                      'org_id': {'description': 'Organization '
+                                                                                'ID '
+                                                                                'to '
+                                                                                'use '
+                                                                                'when '
+                                                                                'launching '
+                                                                                'CFN '
+                                                                                'Stacks. '
+                                                                                'starts '
+                                                                                'with '
+                                                                                'o-. '
+                                                                                'It '
+                                                                                'is '
+                                                                                'found '
+                                                                                'on '
+                                                                                'Organization '
+                                                                                'Settings '
+                                                                                'page',
+                                                                 'type': 'string'},
+                                                      'owner': {'description': 'email '
+                                                                               'address '
+                                                                               'for '
+                                                                               'project '
+                                                                               'owner '
+                                                                               '(not '
+                                                                               'used '
+                                                                               'at '
+                                                                               'present)',
+                                                                'examples': ['Bob.Slydell@example.com'],
+                                                                'type': 'string'},
+                                                      'package_lambda': {'description': 'Package '
+                                                                                        'Lambda '
+                                                                                        'functions '
+                                                                                        'into '
+                                                                                        'zips '
+                                                                                        'before '
+                                                                                        'uploading '
+                                                                                        'to '
+                                                                                        's3, '
+                                                                                        'set '
+                                                                                        'to '
+                                                                                        'false '
+                                                                                        'to '
+                                                                                        'disable',
+                                                                         'examples': [True,
+                                                                                      False],
+                                                                         'type': 'boolean'},
+                                                      'parameters': {'additionalProperties': {'anyOf': [{'items': {'anyOf': [{'type': 'integer'},
+                                                                                                                             {'type': 'string'}]},
+                                                                                                         'type': 'array'},
+                                                                                                        {'type': 'boolean'},
+                                                                                                        {'type': 'integer'},
+                                                                                                        {'type': 'string'}]},
+                                                                     'description': 'Parameter '
+                                                                                    'key-values '
+                                                                                    'to '
+                                                                                    'pass '
+                                                                                    'to '
+                                                                                    'CloudFormation, '
+                                                                                    'parameters '
+                                                                                    'provided '
+                                                                                    'in '
+                                                                                    'global '
+                                                                                    'config '
+                                                                                    'take '
+                                                                                    'precedence',
+                                                                     'type': 'object'},
+                                                      'posthooks': {'description': 'hooks '
+                                                                                   'to '
+                                                                                   'execute '
+                                                                                   'after '
+                                                                                   'executing '
+                                                                                   'tests',
+                                                                    'items': {'$ref': '#/definitions/HookData'},
+                                                                    'type': 'array'},
+                                                      'prehooks': {'description': 'hooks '
+                                                                                  'to '
+                                                                                  'execute '
+                                                                                  'prior '
+                                                                                  'to '
+                                                                                  'executing '
+                                                                                  'tests',
+                                                                   'items': {'$ref': '#/definitions/HookData'},
+                                                                   'type': 'array'},
+                                                      'regions': {'description': 'List '
+                                                                                 'of '
+                                                                                 'AWS '
+                                                                                 'regions',
+                                                                  'items': {'description': 'AWS '
+                                                                                           'Region '
+                                                                                           'name',
+                                                                            'examples': ['us-east-1'],
+                                                                            'pattern': '^(ap|eu|us|sa|ca|cn|af|me|us-gov)-(central|south|north|east|west|southeast|southwest|northeast|northwest)-[0-9]$',
+                                                                            'type': 'string'},
+                                                                  'type': 'array'},
+                                                      'role_name': {'description': 'Role '
+                                                                                   'name '
+                                                                                   'to '
+                                                                                   'use '
+                                                                                   'when '
+                                                                                   'launching '
+                                                                                   'CFN '
+                                                                                   'Stacks.',
+                                                                    'type': 'string'},
+                                                      's3_bucket': {'description': 'Name '
+                                                                                   'of '
+                                                                                   'S3 '
+                                                                                   'bucket '
+                                                                                   'to '
+                                                                                   'upload '
+                                                                                   'project '
+                                                                                   'to, '
+                                                                                   'if '
+                                                                                   'left '
+                                                                                   'out '
+                                                                                   'a '
+                                                                                   'bucket '
+                                                                                   'will '
+                                                                                   'be '
+                                                                                   'auto-generated',
+                                                                    'examples': ['my-s3-bucket-name'],
+                                                                    'pattern': '^[a-z0-9-]*$',
+                                                                    'type': 'string'},
+                                                      's3_enable_sig_v2': {'description': 'Enable '
+                                                                                          '(deprecated) '
+                                                                                          'sigv2 '
+                                                                                          'access '
+                                                                                          'to '
+                                                                                          'auto-generated '
+                                                                                          'buckets',
+                                                                           'examples': [True,
+                                                                                        False],
+                                                                           'type': 'boolean'},
+                                                      's3_object_acl': {'default': 'private',
+                                                                        'description': 'ACL '
+                                                                                       'for '
+                                                                                       'uploaded '
+                                                                                       's3 '
+                                                                                       'objects',
+                                                                        'examples': ['bucket-owner-read',
+                                                                                     'private'],
+                                                                        'pattern': '^(bucket-owner-full-control|bucket-owner-read|authenticated-read|aws-exec-read|public-read-write|public-read|private)$',
+                                                                        'type': 'string'},
+                                                      's3_regional_buckets': {'description': 'Enable '
+                                                                                             'regional '
+                                                                                             'auto-buckets.',
+                                                                              'examples': [True,
+                                                                                           False],
+                                                                              'type': 'boolean'},
+                                                      'shorten_stack_name': {'description': 'Shorten '
+                                                                                            'stack '
+                                                                                            'names '
+                                                                                            'generated '
+                                                                                            'for '
+                                                                                            'tests, '
+                                                                                            'set '
+                                                                                            'to '
+                                                                                            'true '
+                                                                                            'to '
+                                                                                            'enable',
+                                                                             'examples': [True,
+                                                                                          False],
+                                                                             'type': 'boolean'},
+                                                      'tags': {'additionalProperties': {'type': 'string'},
+                                                               'description': 'Tags '
+                                                                              'to '
+                                                                              'apply '
+                                                                              'to '
+                                                                              'CloudFormation '
+                                                                              'template',
+                                                               'examples': [{'CostCenter': '1001'}],
+                                                               'type': 'object'},
+                                                      'template': {'description': 'path '
+                                                                                  'to '
+                                                                                  'template '
+                                                                                  'file '
+                                                                                  'relative '
+                                                                                  'to '
+                                                                                  'the '
+                                                                                  'project '
+                                                                                  'config '
+                                                                                  'file '
+                                                                                  'path',
+                                                                   'examples': ['cloudformation_templates/'],
+                                                                   'type': 'string'}},
+                                       'type': 'object'},
+                     'TestConfig': {'additionalProperties': False,
+                                    'description': 'Test specific '
+                                                   'configuration section.',
+                                    'properties': {'artifact_regions': {'description': 'List '
+                                                                                       'of '
+                                                                                       'AWS '
+                                                                                       'regions '
+                                                                                       'where '
+                                                                                       'artifacts '
+                                                                                       'need '
+                                                                                       'to '
+                                                                                       'be '
+                                                                                       'copied. '
+                                                                                       'This '
+                                                                                       'helps '
+                                                                                       'same '
+                                                                                       'region '
+                                                                                       'artifact '
+                                                                                       'bucket '
+                                                                                       'access '
+                                                                                       'to '
+                                                                                       'resources',
+                                                                        'items': {'description': 'AWS '
+                                                                                                 'Region '
+                                                                                                 'name',
+                                                                                  'examples': ['us-east-1'],
+                                                                                  'pattern': '^(ap|eu|us|sa|ca|cn|af|me|us-gov)-(central|south|north|east|west|southeast|southwest|northeast|northwest)-[0-9]$',
+                                                                                  'type': 'string'},
+                                                                        'type': 'array'},
+                                                   'auth': {'additionalProperties': {'type': 'string'},
+                                                            'description': 'AWS '
+                                                                           'authentication '
+                                                                           'section',
+                                                            'examples': [{'cn-northwest-1': 'china-profile',
+                                                                          'default': 'my-default-profile',
+                                                                          'us-east-2': 'specific-profile-for-us-east-2'}],
+                                                            'type': 'object'},
+                                                   'az_blacklist': {'description': 'List '
+                                                                                   'of '
+                                                                                   'Availablilty '
+                                                                                   'Zones '
+                                                                                   "ID's "
+                                                                                   'to '
+                                                                                   'exclude '
+                                                                                   'when '
+                                                                                   'generating '
+                                                                                   'availability '
+                                                                                   'zones',
+                                                                    'items': {'description': 'Availability '
+                                                                                             'Zone '
+                                                                                             'ID, '
+                                                                                             'eg.: '
+                                                                                             "'use1-az1'",
+                                                                              'examples': ['usw2-laz1-az1',
+                                                                                           'use2-az2'],
+                                                                              'pattern': '(afs1-az1|afs1-az2|afs1-az3|ape1-az1|ape1-az2|ape1-az3|apne1-az1|apne1-az2|apne1-az4|apne2-az1|apne2-az2|apne2-az3|apne2-az4|apne3-az1|apne3-az2|apne3-az3|aps1-az1|aps1-az2|aps1-az3|apse1-az1|apse1-az2|apse1-az3|apse2-az1|apse2-az2|apse2-az3|apse3-az1|apse3-az2|apse3-az3|cac1-az1|cac1-az2|cac1-az4|euc1-az1|euc1-az2|euc1-az3|eun1-az1|eun1-az2|eun1-az3|eus1-az1|eus1-az2|eus1-az3|euw1-az1|euw1-az2|euw1-az3|euw2-az1|euw2-az2|euw2-az3|euw3-az1|euw3-az2|euw3-az3|mes1-az1|mes1-az2|mes1-az3|sae1-az1|sae1-az2|sae1-az3|use1-atl1-az1|use1-az1|use1-az2|use1-az3|use1-az4|use1-az5|use1-az6|use1-bos1-az1|use1-chi1-az1|use1-dfw1-az1|use1-iah1-az1|use1-mci1-az1|use1-mia1-az1|use1-msp1-az1|use1-nyc1-az1|use1-phl1-az1|use2-az1|use2-az2|use2-az3|usw1-az1|usw1-az3|usw2-az1|usw2-az2|usw2-az3|usw2-az4|usw2-den1-az1|usw2-las1-az1|usw2-lax1-az1|usw2-lax1-az2|usw2-pdx1-az1|usw2-phx1-az1|usw2-sea1-az1)',
+                                                                              'type': 'string'},
+                                                                    'type': 'array'},
+                                                   'parameters': {'additionalProperties': {'anyOf': [{'items': {'anyOf': [{'type': 'integer'},
+                                                                                                                          {'type': 'string'}]},
+                                                                                                      'type': 'array'},
+                                                                                                     {'type': 'boolean'},
+                                                                                                     {'type': 'integer'},
+                                                                                                     {'type': 'string'}]},
+                                                                  'default': {},
+                                                                  'description': 'Parameter '
+                                                                                 'key-values '
+                                                                                 'to '
+                                                                                 'pass '
+                                                                                 'to '
+                                                                                 'CloudFormation, '
+                                                                                 'parameters '
+                                                                                 'provided '
+                                                                                 'in '
+                                                                                 'global '
+                                                                                 'config '
+                                                                                 'take '
+                                                                                 'precedence',
+                                                                  'type': 'object'},
+                                                   'posthooks': {'description': 'hooks '
+                                                                                'to '
+                                                                                'execute '
+                                                                                'after '
+                                                                                'executing '
+                                                                                'tests',
+                                                                 'items': {'$ref': '#/definitions/HookData'},
+                                                                 'type': 'array'},
+                                                   'prehooks': {'description': 'hooks '
+                                                                               'to '
+                                                                               'execute '
+                                                                               'prior '
+                                                                               'to '
+                                                                               'executing '
+                                                                               'tests',
+                                                                'items': {'$ref': '#/definitions/HookData'},
+                                                                'type': 'array'},
+                                                   'regions': {'description': 'List '
+                                                                              'of '
+                                                                              'AWS '
+                                                                              'regions',
+                                                               'items': {'description': 'AWS '
+                                                                                        'Region '
+                                                                                        'name',
+                                                                         'examples': ['us-east-1'],
+                                                                         'pattern': '^(ap|eu|us|sa|ca|cn|af|me|us-gov)-(central|south|north|east|west|southeast|southwest|northeast|northwest)-[0-9]$',
+                                                                         'type': 'string'},
+                                                               'type': 'array'},
+                                                   'role_name': {'description': 'Role '
+                                                                                'name '
+                                                                                'to '
+                                                                                'use '
+                                                                                'when '
+                                                                                'launching '
+                                                                                'CFN '
+                                                                                'Stacks.',
+                                                                 'type': 'string'},
+                                                   's3_bucket': {'description': 'Name '
+                                                                                'of '
+                                                                                'S3 '
+                                                                                'bucket '
+                                                                                'to '
+                                                                                'upload '
+                                                                                'project '
+                                                                                'to, '
+                                                                                'if '
+                                                                                'left '
+                                                                                'out '
+                                                                                'a '
+                                                                                'bucket '
+                                                                                'will '
+                                                                                'be '
+                                                                                'auto-generated',
+                                                                 'examples': ['my-s3-bucket-name'],
+                                                                 'pattern': '^[a-z0-9-]*$',
+                                                                 'type': 'string'},
+                                                   's3_regional_buckets': {'description': 'Enable '
+                                                                                          'regional '
+                                                                                          'auto-buckets.',
+                                                                           'examples': [True,
+                                                                                        False],
+                                                                           'type': 'boolean'},
+                                                   'stack_name': {'description': 'Cloudformation '
+                                                                                 'Stack '
+                                                                                 'Name',
+                                                                  'type': 'string'},
+                                                   'stack_name_prefix': {'description': 'Prefix '
+                                                                                        'to '
+                                                                                        'apply '
+                                                                                        'to '
+                                                                                        'generated '
+                                                                                        'CFN '
+                                                                                        'Stack '
+                                                                                        'Name',
+                                                                         'type': 'string'},
+                                                   'stack_name_suffix': {'description': 'Suffix '
+                                                                                        'to '
+                                                                                        'apply '
+                                                                                        'to '
+                                                                                        'generated '
+                                                                                        'CFN '
+                                                                                        'Stack '
+                                                                                        'Name',
+                                                                         'type': 'string'},
+                                                   'tags': {'additionalProperties': {'type': 'string'},
+                                                            'description': 'Tags '
+                                                                           'to '
+                                                                           'apply '
+                                                                           'to '
+                                                                           'CloudFormation '
+                                                                           'template',
+                                                            'examples': [{'CostCenter': '1001'}],
+                                                            'type': 'object'},
+                                                   'template': {'description': 'path '
+                                                                               'to '
+                                                                               'template '
+                                                                               'file '
+                                                                               'relative '
+                                                                               'to '
+                                                                               'the '
+                                                                               'project '
+                                                                               'config '
+                                                                               'file '
+                                                                               'path',
+                                                                'examples': ['cloudformation_templates/'],
+                                                                'type': 'string'}},
+                                    'type': 'object'}},
+     'description': 'Taskcat configuration file',
+     'properties': {'general': {'$ref': '#/definitions/GeneralConfig',
+                                'default': {'artifact_regions': None,
+                                            'auth': None,
+                                            'parameters': None,
+                                            'posthooks': None,
+                                            'prehooks': None,
+                                            'regions': None,
+                                            's3_bucket': None,
+                                            's3_regional_buckets': None,
+                                            'tags': None}},
+                    'project': {'$ref': '#/definitions/ProjectConfig',
+                                'default': {'artifact_regions': None,
+                                            'auth': None,
+                                            'az_blacklist': None,
+                                            'build_submodules': None,
+                                            'lambda_source_path': None,
+                                            'lambda_zip_path': None,
+                                            'name': None,
+                                            'org_id': None,
+                                            'owner': None,
+                                            'package_lambda': None,
+                                            'parameters': None,
+                                            'posthooks': None,
+                                            'prehooks': None,
+                                            'regions': None,
+                                            'role_name': None,
+                                            's3_bucket': None,
+                                            's3_enable_sig_v2': None,
+                                            's3_object_acl': None,
+                                            's3_regional_buckets': None,
+                                            'shorten_stack_name': None,
+                                            'tags': None,
+                                            'template': None}},
+                    'tests': {'additionalProperties': {'$ref': '#/definitions/TestConfig'},
+                              'default': {},
+                              'type': 'object'}},
+     'type': 'object'}
+
+On instance:
+    {'parameters': {'AvailabilityZones': '$[taskcat_getaz_2]',
+                    'EmailAddress': 'email@yourdomain.com',
+                    'KeyPairName': 'YOUR-KEYPAIR-HERE',
+                    'QSS3BucketName': '$[taskcat_autobucket]',
+                    'QSS3BucketRegion': '$[taskcat_current_region]',
+                    'QSS3KeyPrefix': 'qs-workshop/',
+                    'WebserverCIDR': '0.0.0.0/0'}}
